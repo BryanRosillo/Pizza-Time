@@ -23,5 +23,9 @@ public class Ingredient {
 		PROTEIN, VEGGIES, CHESSE, SAUCE
 	}
 	
+    public Type getType() {
+        return type;
+    }
+
 
 }
