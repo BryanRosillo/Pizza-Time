@@ -2,12 +2,15 @@
 <html>
 	<head>
 		<title>Pizza Time</title>
+		<link rel="stylesheet" th:href="@{/styles/global.css}">
 	</head>
 	<body>
 		<h1>Design your Pizza</h1>
 		<img th:src="@{/images/pizzaHome.png}" style="width: 500px; height: 300px;"/>
 		
+		
 		<form method="post" th:object="${pizza}">
+			<span class="validationError" th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}" >Ingredients pizza error</span><br>
 			<div class="ingredient-group" id="proteins">
 				<h3>Pick your protein:</h3>
 				<div th:each="ingredient : ${protein}">
@@ -44,6 +47,7 @@
 			<div>
 				<h2>Name your pizza:</h2>
 				<input type="text" th:field="*{name}">
+				<span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" >Name pizza error</span>
 				<br>
 			</div>
 			
