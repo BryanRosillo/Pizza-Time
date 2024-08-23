@@ -1,3 +1,4 @@
-.validationError{
-	color: #fa2424;
+.validationError {
+    color: #e74c3c;
+    font-size: 0.9rem;
 }
