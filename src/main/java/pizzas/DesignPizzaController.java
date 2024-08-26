@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,26 +24,23 @@ import pizzas.Ingredient.Type;
 @SessionAttributes("pizzaOrder")
 public class DesignPizzaController {
 	
+	private final IngredientRepository ingredientRepo;
+	
+	@Autowired
+	public DesignPizzaController(IngredientRepository ingredientRepo) {
+		this.ingredientRepo = ingredientRepo;
+	}
+	
 	@ModelAttribute
 	public void addIngredientsToModel(Model model) {
-		List<Ingredient> ingredients = Arrays.asList(
-				new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-				new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-				new Ingredient("MSHR", "Mushroom", Type.VEGGIES),
-				new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-				new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-				new Ingredient("CHED", "Cheddar", Type.CHESSE),
-				new Ingredient("JACK", "Monterrey Jack", Type.CHESSE),
-				new Ingredient("SLSA", "Salsa", Type.SAUCE),
-				new Ingredient("SUCR", "Sour Cream", Type.SAUCE)
-				);
-		
+		Iterable<Ingredient> ingredients = ingredientRepo.findAll();
 		Type[] types = Ingredient.Type.values();
-		for(Type type: types) {
-			model.addAttribute(type.toString().toLowerCase(),
-					filterByType(ingredients,type)
-					);
+		for(Type type : types) {
+			model.addAttribute(
+					type.toString().toLowerCase(),
+					this.filterByType((List<Ingredient>) ingredients, type));
 		}
+		
 		
 	}
 	
