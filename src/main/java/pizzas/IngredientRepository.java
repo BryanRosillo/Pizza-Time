@@ -2,7 +2,10 @@ package pizzas;
 
 import java.util.Optional;
 
-public interface IngredientRepository {
+import org.springframework.data.repository.CrudRepository;
+
+// If you want, you can change 'CrudRepository' for 'Repository' interface.
+public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 	
 	Iterable<Ingredient> findAll();
 	

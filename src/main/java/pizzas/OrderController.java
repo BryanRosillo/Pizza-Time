@@ -1,5 +1,6 @@
 package pizzas;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 @SessionAttributes("pizzaOrder")
 public class OrderController {
 	
+	private OrderRepository orderRepo;
+	
+	@Autowired
+	public OrderController(OrderRepository orderRepo) {
+		this.orderRepo = orderRepo;
+	}
+	
 	@GetMapping("/current")
 	public String orderForm() {
 		return "orderForm";
@@ -27,6 +35,8 @@ public class OrderController {
 		if(errors.hasErrors()) {
 			return "orderForm";
 		}
+		
+		//orderRepo.save(pizzaOrder);
 		
 		sessionStatus.setComplete();
 		return "redirect:/";
