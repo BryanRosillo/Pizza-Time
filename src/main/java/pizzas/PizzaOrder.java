@@ -5,27 +5,28 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
-//'Table' annotation is optional. And you can change PizzaOrder name table with '@Table(Name)'
 @Data
-@Table
+@Entity
 public class PizzaOrder implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id;
-	
-	//The rest of the attributes will be mapped automatically with their names. 
-	//If you want to change their names you can apply the annotation @Column(attribute-name)
-	
+		
 	private Date placedAt = new Date();
 	
 	@NotBlank(message="Delivery name is required.")
@@ -52,6 +53,7 @@ public class PizzaOrder implements Serializable {
 	@Digits(integer=3, fraction=0, message="Invalid CVV.")
 	private String ccCVV;
 	
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Pizza> pizzas = new ArrayList<>();
 	
 	public void addPizza(Pizza pizza) {

@@ -1,16 +1,26 @@
 package pizzas;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@Table
+@Entity
+@NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
+@RequiredArgsConstructor
 public class Ingredient {
 	
 	@Id
 	private final String id;
 	private final String name;
+	
+	@Enumerated(EnumType.STRING)
 	private final Type type;
 	
 

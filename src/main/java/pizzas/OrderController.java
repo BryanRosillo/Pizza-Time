@@ -36,7 +36,7 @@ public class OrderController {
 			return "orderForm";
 		}
 		
-		//orderRepo.save(pizzaOrder);
+		orderRepo.save(pizzaOrder);
 		
 		sessionStatus.setComplete();
 		return "redirect:/";

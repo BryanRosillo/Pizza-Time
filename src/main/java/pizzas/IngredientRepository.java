@@ -1,10 +1,10 @@
 package pizzas;
 
 import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 
 // If you want, you can change 'CrudRepository' for 'Repository' interface.
+//CrudRepository and Repository can work with Spring Data JDBC and JPA.
 public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 	
 	Iterable<Ingredient> findAll();
