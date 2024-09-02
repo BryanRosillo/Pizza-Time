@@ -1,27 +1,23 @@
 package pizzas;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@Entity
+@AllArgsConstructor
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
-@RequiredArgsConstructor
+@Table("ingredients")
 public class Ingredient {
 	
-	@Id
-	private final String id;
-	private final String name;
-	
-	@Enumerated(EnumType.STRING)
-	private final Type type;
-	
+	@PrimaryKey
+	private String id;
+	private String name;
+	private Type type;
 
 	public enum Type{
 		PROTEIN, VEGGIES, CHEESE, SAUCE
