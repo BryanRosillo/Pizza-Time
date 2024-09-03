@@ -63,7 +63,7 @@ public class DesignPizzaController {
 			return "design";
 		}
 		
-		pizzaOrder.addPizza(new PizzaUDT(pizza.getName(),pizza.getIngredients()));
+		pizzaOrder.addPizza(pizza);
 		return "redirect:/orders/current";
 	}
 	

@@ -5,7 +5,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class IngredientByIdConverter implements Converter<String, IngredientUDT> {
+public class IngredientByIdConverter implements Converter<String, Ingredient> {
 	
 	
 	private IngredientRepository ingredientRepo;
@@ -17,9 +17,8 @@ public class IngredientByIdConverter implements Converter<String, IngredientUDT>
 	
 
 	@Override
-	public IngredientUDT convert(String id) {
-		Ingredient ingredient = ingredientRepo.findById(id).orElse(null); 
-		return new IngredientUDT(ingredient.getName(),ingredient.getType());
+	public Ingredient convert(String id) {
+		return ingredientRepo.findById(id).orElse(null);
 	}
 	
 }
