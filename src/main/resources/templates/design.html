@@ -52,8 +52,19 @@
 				<br>
 			</div>
 			
+			<!--  
+			<input type="hidden" name="_csrf" th:value="${_csrf.token}">
+			//-->
+			
 			<button>Submit your pizza</button>
 			
 		</form>
+		
+		<div>
+	        <form method="post" th:action="@{/logout}" >
+	            <button type="submit" id="button" style="background-color:#FE5252">Logout</button>
+	        </form>
+   		</div>
+		
 	</body>
 </html>

@@ -1,6 +1,7 @@
 package pizzas;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +29,13 @@ public class OrderController {
 	}
 	
 	@PostMapping
-	public String processOrder(@Valid PizzaOrder pizzaOrder, Errors errors, SessionStatus sessionStatus) {
+	public String processOrder(@Valid PizzaOrder pizzaOrder, Errors errors, SessionStatus sessionStatus, @AuthenticationPrincipal User user) {
 		
 		if(errors.hasErrors()) {
 			return "orderForm";
 		}
+		
+		pizzaOrder.setUser(user);
 		
 		orderRepo.save(pizzaOrder);
 		

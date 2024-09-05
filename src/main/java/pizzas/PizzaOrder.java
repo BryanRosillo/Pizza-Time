@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
@@ -28,6 +29,9 @@ public class PizzaOrder implements Serializable {
 	private Long id;
 		
 	private Date placedAt = new Date();
+	
+	@ManyToOne
+	private User user;
 	
 	@NotBlank(message="Delivery name is required.")
 	private String deliveryName;

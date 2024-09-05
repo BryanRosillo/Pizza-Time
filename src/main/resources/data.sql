@@ -7,3 +7,4 @@ insert into Ingredient(id, name, type) values
     ('JACK', 'Monterrey Jack', 'CHEESE'),
     ('SLSA', 'Salsa', 'SAUCE'),
     ('SUCR', 'Sour Cream', 'SAUCE');
+    

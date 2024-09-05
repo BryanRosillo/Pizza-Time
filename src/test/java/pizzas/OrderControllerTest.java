@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(OrderController.class)
@@ -22,10 +24,18 @@ public class OrderControllerTest {
 	@MockBean
 	private OrderRepository orderRepository;
 	
+	@MockBean
+	private UserRepository userRepository;
+	
+	@MockBean
+	private PasswordEncoder passwordEncoder;
+	
 	@Autowired
 	private MockMvc mockMvc;
 	
+	
 	@Test
+	@WithMockUser(username = "user", roles = {"USER"})
 	public void testOrderController() throws Exception {
 		mockMvc.perform(get("/orders/current").sessionAttr("pizzaOrder", new PizzaOrder()))
 			.andExpect(status().isOk())

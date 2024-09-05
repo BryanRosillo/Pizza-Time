@@ -15,7 +15,7 @@ img {
     margin-top: 20px;
 }
 
-#buttonStart{
+#button{
     margin: 30px;
     width: 350px;
     height: 100px;
@@ -28,7 +28,7 @@ img {
     font-size: 25px;
 }
 
-#buttonStart:hover{
+#button:hover{
     cursor: pointer;
     background-color: #ff3f3f;
 }
