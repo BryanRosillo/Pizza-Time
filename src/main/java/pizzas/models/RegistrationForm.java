@@ -1,4 +1,4 @@
-package pizzas;
+package pizzas.models;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

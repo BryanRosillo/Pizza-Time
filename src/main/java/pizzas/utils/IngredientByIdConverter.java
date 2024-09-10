@@ -1,8 +1,11 @@
-package pizzas;
+package pizzas.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
+
+import pizzas.models.Ingredient;
+import pizzas.models.IngredientRepository;
 
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {

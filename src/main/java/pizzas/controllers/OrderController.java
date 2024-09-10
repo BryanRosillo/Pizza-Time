@@ -1,4 +1,4 @@
-package pizzas;
+package pizzas.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import jakarta.validation.Valid;
+import pizzas.models.OrderRepository;
+import pizzas.models.PizzaOrder;
+import pizzas.models.User;
 
 @Controller
 @RequestMapping("/orders")

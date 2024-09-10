@@ -1,4 +1,4 @@
-package pizzas;
+package pizzas.controllers;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
-import pizzas.Ingredient.Type;
+import pizzas.models.Ingredient;
+import pizzas.models.IngredientRepository;
+import pizzas.models.Pizza;
+import pizzas.models.PizzaOrder;
+import pizzas.models.Ingredient.Type;
 
 @Controller
 @RequestMapping("/design")

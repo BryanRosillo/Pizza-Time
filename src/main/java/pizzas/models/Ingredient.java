@@ -1,4 +1,4 @@
-package pizzas;
+package pizzas.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

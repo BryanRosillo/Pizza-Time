@@ -15,6 +15,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
+import pizzas.controllers.OrderController;
+import pizzas.models.IngredientRepository;
+import pizzas.models.OrderRepository;
+import pizzas.models.PizzaOrder;
+import pizzas.models.UserRepository;
+
 @WebMvcTest(OrderController.class)
 public class OrderControllerTest {
 	

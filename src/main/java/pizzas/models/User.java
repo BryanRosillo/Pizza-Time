@@ -1,4 +1,4 @@
-package pizzas;
+package pizzas.models;
 
 import java.io.Serializable;
 import java.util.Arrays;
