@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -20,6 +21,7 @@ import lombok.Data;
 
 @Data
 @Entity
+@RestResource(rel="orders", path="orders")
 public class PizzaOrder implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
