@@ -7,7 +7,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import javax.net.ssl.SSLEngineResult.Status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import pizzas.models.IngredientRepository;
 import pizzas.models.OrderRepository;
+import pizzas.models.PizzaRepository;
 import pizzas.models.UserRepository;
 
 @WebMvcTest()
@@ -32,6 +32,10 @@ public class HomeControllerTest {
 	@MockBean
 	private UserRepository userRepository;
 	
+	
+	@MockBean
+	private PizzaRepository pizzaRepository;
+
 	@MockBean
 	private PasswordEncoder passwordEncoder;
 	

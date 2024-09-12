@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import pizzas.controllers.DesignPizzaController;
 import pizzas.models.IngredientRepository;
 import pizzas.models.OrderRepository;
+import pizzas.models.PizzaRepository;
 import pizzas.models.UserRepository;
 
 @WebMvcTest(DesignPizzaController.class)
@@ -28,6 +29,9 @@ public class DesignPizzaControllerTest {
 	
 	@MockBean
 	private UserRepository userRepository;
+	
+	@MockBean
+	private PizzaRepository pizzaRepository;
 	
 	@MockBean
 	private PasswordEncoder passwordEncoder;

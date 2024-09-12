@@ -19,6 +19,7 @@ import pizzas.controllers.OrderController;
 import pizzas.models.IngredientRepository;
 import pizzas.models.OrderRepository;
 import pizzas.models.PizzaOrder;
+import pizzas.models.PizzaRepository;
 import pizzas.models.UserRepository;
 
 @WebMvcTest(OrderController.class)
@@ -32,6 +33,9 @@ public class OrderControllerTest {
 	
 	@MockBean
 	private UserRepository userRepository;
+	
+	@MockBean
+	private PizzaRepository pizzaRepository;
 	
 	@MockBean
 	private PasswordEncoder passwordEncoder;
