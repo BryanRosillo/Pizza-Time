@@ -3,6 +3,7 @@ package pizzas.config;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -44,6 +45,8 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authz -> authz
 				.requestMatchers("/design","/orders").hasRole("USER")
+				.requestMatchers(HttpMethod.POST, "/api/ingredients").hasAuthority("SCOPE_writeIngredients")
+				.requestMatchers(HttpMethod.DELETE, "/api/ingredients/*").hasAuthority("SCOPE_deleteIngredients")
 				.requestMatchers(PathRequest.toH2Console()).permitAll()
 				.anyRequest().permitAll())
 		.formLogin(formLogin->formLogin
@@ -56,7 +59,9 @@ public class SecurityConfig {
 				.disable())
 		.headers(headers -> headers
 				.frameOptions(origin -> origin
-						.sameOrigin()));
+						.sameOrigin()))
+		.oauth2ResourceServer(oauth2 -> oauth2
+				.jwt(jwt->jwt.jwkSetUri("http://localhost:9000/oauth2/jwks")));
 		
 		return http.build();
 		
