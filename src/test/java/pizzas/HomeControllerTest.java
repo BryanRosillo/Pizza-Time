@@ -32,7 +32,6 @@ public class HomeControllerTest {
 	@MockBean
 	private UserRepository userRepository;
 	
-	
 	@MockBean
 	private PizzaRepository pizzaRepository;
 
